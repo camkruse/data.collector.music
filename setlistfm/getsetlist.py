@@ -16,7 +16,7 @@ class Setlist:
         resp = requests.get(url)
         self.data = json.loads(resp.text)
 
-    def by_artis(self):
+    def by_artist(self):
 
         return "artistName"
 
