@@ -7,30 +7,22 @@ import requests
 
 class Setlist:
 
-    def get_setlist_by_artist(self, artist):
+    def __init__(self):
+        self.base_url = "http://api.setlist.fm/rest/0.1/search/setlists.json?"
 
-        # Get method parameter and build web service URL
-        #self.artist = artist
-        url = "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=" + \
-            artist
+    def get_setlist(self, attribute, value):
 
-        # Call Setlist.fm API using requests library
+        url = self.base_url + attribute + "=" + value
         resp = requests.get(url)
-
-        # Format Request into JSON Object
         self.data = json.loads(resp.text)
 
-    def get_setlist_by_artist_mbid(self, artistMbid):
+    def by_artist(self):
 
-        # Get method parameter and build web service URL
-        url = "http://api.setlist.fm/rest/0.1/search/setlists.json?artistMbid=" + \
-            artistMbid
+        return "artistName"
 
-        # Call Setlist.fm API using requests library
-        resp = requests.get(url)
+    def by_artist_mbid(self):
 
-        # Format Request into JSON Object
-        self.data = json.loads(resp.text)
+        return "artistMbid"
 
 ####################################################
 # Below will be moved into the processing package
@@ -38,8 +30,10 @@ class Setlist:
 # Create Object from Class
 objSetlistbyArtist = setlist()
 
+
 # Call Method from Object
-objSetlistbyArtist.get_setlist_by_artist('Metallica')
+#objSetlistbyArtist.get_setlist_by_artist('Metallica')
+objectSetlistbyArtist.get_setlist(objSetlistbyArtist.by_artist,"Metallica")
 
 # Print JSON
 print objSetlistbyArtist.data
@@ -47,6 +41,6 @@ print objSetlistbyArtist.data
 
 # Example 2
 objSetlistByArtistMbid = setlist()
-objSetlistByArtistMbid.get_setlist_by_artist_mbid(
+objSetlistByArtistMbid.get_setlist(objSetlistByArtistMbid.by_artist_mbid,
     'a16e47f5-aa54-47fe-87e4-bb8af91a9fdd')
 print objSetlistByArtistMbid.data
