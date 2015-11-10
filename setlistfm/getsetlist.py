@@ -10,9 +10,9 @@ class Setlist:
     def __init__(self):
         self.base_url = "http://api.setlist.fm/rest/0.1/search/setlists.json?"
 
-    def get_setlist(self, attribute, feature):
+    def get_setlist(self, attribute, value):
 
-        url = self.base_url + attribute + "=" + feature
+        url = self.base_url + attribute + "=" + value
         resp = requests.get(url)
         self.data = json.loads(resp.text)
 
