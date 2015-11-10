@@ -41,6 +41,6 @@ print objSetlistbyArtist.data
 
 # Example 2
 objSetlistByArtistMbid = setlist()
-objSetlistByArtistMbid.get_setlist(objSetlistbyArtist.by_artist_mbid,
+objSetlistByArtistMbid.get_setlist(objSetlistByArtistMbid.by_artist_mbid,
     'a16e47f5-aa54-47fe-87e4-bb8af91a9fdd')
 print objSetlistByArtistMbid.data
